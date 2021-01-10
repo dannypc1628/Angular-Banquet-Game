@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/functions";
+@import "./variables";
+@import "~bootstrap/scss/bootstrap";
+
+*{
+  box-sizing: border-box;
+}
+
+
+.board{
+  height: 300px;
+  font-size: 72px;
+  text-shadow: 1px 1px 0 black, -1px -1px 0 black,
+              -1px 1px 0 black, 1px -1px 0 black;
+}
+
+.adLink{
+  line-height: 1.5;
+  font-size: 24px;
+  color:PaleVioletRed;
+}
+
+.ad{
+  :hover{
+    // border:solid 1px green;
+    background-color: rgb(152, 251, 152 , 0.5);
+  }
+}

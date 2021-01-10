@@ -1,6 +1,14 @@
-<div class="container">
-  <app-game></app-game>
+<div class="container text-center">
+  <ng-container *ngIf="state==0">
+    <h1 class="text-center display-2  my-4 my-md-5 pt-5 pd-3">言不由衷</h1>
+    <p class="h3 mb-2">尾牙遊戲訓練</p>
+  </ng-container>
 
+  <app-game *ngIf="state!=0"></app-game>
+  <button class="btn btn-lg btn-primary my-5" *ngIf="state==0" (click)="go()">
+    30秒挑戰GO！
+  </button>
+  <app-ad [link]="adLink" [typeName]="adTypeName" [content]="adContent"></app-ad>
 </div>
 
 <router-outlet></router-outlet>
