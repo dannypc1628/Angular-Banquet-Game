@@ -1,5 +1,8 @@
+import { Color } from './../type/color';
+import { Quation } from './../type/quation';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { QuationItem } from '../type/quationItem';
 
 @Component({
   selector: 'app-game',
@@ -7,16 +10,24 @@ import { DataService } from '../data.service';
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-  quation: string;
-  answer: string;
+  quations: Array<QuationItem>;
+  choiceItems: Array<Color>;
+  useIndex: number;
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.next();
+  }
 
-  next(): void {}
+  next(): void {
+    const quation = this.dataService.getQuation();
+    this.quations = quation.quations;
+    this.choiceItems = quation.choiceItems;
+    this.useIndex = quation.useIndex;
+  }
 
   checkAnswer(answer: string): void {
-    if (answer === this.answer) {
+    if (answer === this.quations[this.useIndex].answerColor.name) {
       this.showAnswer('yes');
     } else {
       this.showAnswer('no');
@@ -24,8 +35,11 @@ export class GameComponent implements OnInit {
   }
   showAnswer(yesNo: string): void {
     if ('yes' === yesNo.toLocaleLowerCase()) {
+      console.log('yes');
     }
-    if ('no' === yesNo.toLocaleUpperCase()) {
+    if ('no' === yesNo.toLocaleLowerCase()) {
+      console.log('no');
     }
+    this.next();
   }
 }

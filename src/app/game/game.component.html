@@ -1,15 +1,18 @@
 <p>game works!</p>
 
-<p>遊戲題目{{quation}}</p>
-<div>
-  <p [ngClass]="{'class': true}">{{quation}}</p>
+<p>遊戲題目{{quations[useIndex].title}}</p>
+<div [style.background-color]="quations[1].answerColor.code">
+  <p [style.color]="quations[0].answerColor.code">{{quations[2].answerColor.name}}</p>
 </div>
 
 <div class="row">
   <div class="col">
-    <button>藍色</button>
+    <button (click)="checkAnswer(choiceItems[0].name)">{{choiceItems[0].name}}</button>
   </div>
   <div class="col">
-    <button>黃色</button>
+    <button (click)="checkAnswer(choiceItems[1].name)">{{choiceItems[1].name}}</button>
+  </div>
+  <div class="col">
+    <button (click)="checkAnswer(choiceItems[2].name)">{{choiceItems[2].name}}</button>
   </div>
 </div>
