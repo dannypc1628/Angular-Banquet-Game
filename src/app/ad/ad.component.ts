@@ -16,7 +16,7 @@ export class AdComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  goTo(){
+  goTo(): void {
     window.open(this.link, '_blank');
   }
 }
