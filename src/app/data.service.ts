@@ -11,46 +11,55 @@ export class DataService {
 
   // 會出現的顏色
   colors: Array<Color> = [
-    { code: '#000', name: '白色', no: 1 },
-    { code: '#FFF', name: '黑色', no: 2 },
-    { code: '#FFF', name: '橘色', no: 3 },
-    { code: '#FFF', name: '綠色', no: 4 },
-    { code: '#FFF', name: '黃色', no: 5 },
-    { code: '#FFF', name: '紅色', no: 6 },
+    { code: 'White', name: '白色', order: 0 },
+    { code: 'Black', name: '黑色', order: 0 },
+    { code: 'Orange', name: '橘色', order: 0 },
+    { code: 'Green', name: '綠色', order: 0 },
+    { code: 'Yellow', name: '黃色', order: 0 },
+    { code: 'Red', name: '紅色', order: 0 },
   ];
-
   // 題型
   quationItems: Array<QuationItem> = [
-    { title: '請說出文字的顏色！', type: 1, answerColor: null },
-    { title: '請說出背景的顏色！', type: 2, answerColor: null },
-    { title: '請說出文字是什麼？', type: 3, answerColor: null },
+    { title: '請說出文字的顏色！', type: 0, answerColor: null },
+    { title: '請說出背景的顏色！', type: 1, answerColor: null },
+    { title: '請說出文字是什麼？', type: 2, answerColor: null },
   ];
 
   getQuation(): Quation {
     const choiceItems: Array<Color> = [];
-
+    const excludeColorIndex = new Set<number>();
     // 建立題庫(題型、選項、答案)
     // 目前題型數量等於選項數量
     for (let index = 0; index < this.quationItems.length; index++) {
-
       // 抽顏色
-      const number = Math.floor(Math.random() * this.colors.length);
-      const c = this.colors[number];
+      const c = this.getColor(excludeColorIndex);
       this.quationItems[index].answerColor = c;
 
       // 選項給予隨機編號
-      c.no = Math.floor(Math.random() * this.colors.length);
+      c.order = Math.floor(Math.random() * this.colors.length);
       choiceItems.push(c);
     }
     console.log(choiceItems);
     // 依隨機編號排序選項
-    choiceItems.sort((a, b) => a.no - b.no);
+    choiceItems.sort((a, b) => a.order - b.order);
 
     // 隨機從題型中抽一題
     const qNumber = Math.floor(Math.random() * this.quationItems.length);
     return {
-      Quation: this.quationItems[qNumber],
-      ChoiceItems: choiceItems,
+      quations: this.quationItems,
+      choiceItems,
+      useIndex: qNumber,
     };
+  }
+
+  getColor(usedColors: Set<number>): Color {
+    while (true) {
+      const index = Math.floor(Math.random() * this.colors.length);
+      if (usedColors.has(index)) {
+        continue;
+      }
+      usedColors.add(index);
+      return this.colors[index];
+    }
   }
 }

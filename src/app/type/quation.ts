@@ -1,6 +1,7 @@
 import { QuationItem } from './quationItem';
 import { Color } from './color';
 export interface Quation {
-  Quation: QuationItem;
-  ChoiceItems: Array<Color>;
+  quations: Array<QuationItem>;
+  choiceItems: Array<Color>;
+  useIndex: number;
 }
