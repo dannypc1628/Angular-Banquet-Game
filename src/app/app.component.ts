@@ -14,7 +14,7 @@ export class AppComponent {
 
   state = 0;
 
-  go():void{
+  go(): void {
     this.state = 1;
   }
 }

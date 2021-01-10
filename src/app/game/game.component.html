@@ -1,19 +1,33 @@
-<p class="my-5 h1 text-center">{{quations[useIndex].title}}</p>
-<div class="board row " [style.background-color]="quations[1].answerColor.code">
-  <div class="col text-center align-self-center">
-    <p class="font-weight-bold" [style.color]="quations[0].answerColor.code">{{quations[2].answerColor.name}}</p>
+<p class="my-3">得分：{{count}}
+  <br>
+</p>
+<ng-container *ngIf="false==stoped">
+  <p class="my-3">剩餘秒數：{{time}}</p>
+  <p class="my-5 h1 text-center">{{quations[useIndex].title}}</p>
+  <div class="board row " [style.background-color]="quations[1].answerColor.code">
+    <div class="col text-center align-self-center">
+      <p class="font-weight-bold" [style.color]="quations[0].answerColor.code">{{quations[2].answerColor.name}}</p>
+    </div>
+  </div>
 
+  <div class="row mt-5">
+    <div class="col">
+      <button class="btn btn-lg btn-outline-secondary d-block mx-auto"
+        (click)="checkAnswer(choiceItems[0].name)">{{choiceItems[0].name}}</button>
+    </div>
+    <div class="col ">
+      <button class="btn btn-lg btn-outline-secondary d-block mx-auto"
+        (click)="checkAnswer(choiceItems[1].name)">{{choiceItems[1].name}}</button>
+    </div>
+    <div class="col ">
+      <button class="btn btn-lg btn-outline-secondary d-block mx-auto"
+        (click)="checkAnswer(choiceItems[2].name)">{{choiceItems[2].name}}</button>
+    </div>
   </div>
-</div>
+</ng-container>
+<ng-container *ngIf="true==stoped">
+  最高連續答對次數：{{maxContinueCount}}
+    <br>
+    <button class=" my-5 mx-auto btn btn-lg btn-success" (click)="ngOnInit()">再來一次</button>
 
-<div class="row mt-5">
-  <div class="col">
-    <button class="btn btn-lg btn-outline-secondary d-block mx-auto" (click)="checkAnswer(choiceItems[0].name)">{{choiceItems[0].name}}</button>
-  </div>
-  <div class="col ">
-    <button class="btn btn-lg btn-outline-secondary d-block mx-auto" (click)="checkAnswer(choiceItems[1].name)">{{choiceItems[1].name}}</button>
-  </div>
-  <div class="col ">
-    <button class="btn btn-lg btn-outline-secondary d-block mx-auto" (click)="checkAnswer(choiceItems[2].name)">{{choiceItems[2].name}}</button>
-  </div>
-</div>
+</ng-container>
