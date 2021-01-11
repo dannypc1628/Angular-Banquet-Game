@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Ad } from '../type/ad';
 
 @Component({
   selector: 'app-ad',
@@ -6,17 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./ad.component.scss'],
 })
 export class AdComponent implements OnInit {
-  @Input() typeName: string;
-
-  @Input() content: string;
-
-  @Input() link: string;
+  @Input() ad: Ad;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   goTo(): void {
-    window.open(this.link, '_blank');
+    window.open(this.ad.link, '_blank');
   }
 }

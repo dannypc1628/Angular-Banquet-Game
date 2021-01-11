@@ -6,9 +6,14 @@
 
   <app-game *ngIf="state!=0"></app-game>
   <button class="btn btn-lg btn-primary my-5" *ngIf="state==0" (click)="go()">
-    30秒挑戰GO！
+    60秒挑戰GO！
   </button>
-  <app-ad [link]="adLink" [typeName]="adTypeName" [content]="adContent"></app-ad>
+  <p *ngIf="maxCount!=null&&state==0">最高得分：{{maxCount}}</p>
+  <p *ngIf="maxContinueCount!=null&&state==0">最高連續答對：{{maxContinueCount}}</p>
+  <app-ad [ad]="ad"></app-ad>
 </div>
+
+
+
 
 <router-outlet></router-outlet>

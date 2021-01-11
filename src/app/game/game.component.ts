@@ -15,8 +15,10 @@ export class GameComponent implements OnInit {
   useIndex: number;
   maxContinueCount = 0;
   continueCount = 0;
+  newMaxContinue = false;
+  newMaxCount = false;
   count = 0;
-  time = 30;
+  time = 0;
   timer: any;
   stoped = false;
   constructor(private dataService: DataService) {}
@@ -25,7 +27,7 @@ export class GameComponent implements OnInit {
     this.maxContinueCount = 0;
     this.continueCount = 0;
     this.count = 0;
-    this.time = 30;
+    this.time = 60;
     this.stoped = false;
     this.next();
 
@@ -35,6 +37,30 @@ export class GameComponent implements OnInit {
       } else {
         this.clearTimer();
         this.stoped = true;
+        const maxContinue = localStorage.getItem('maxContinueCount');
+        if (
+          maxContinue == null ||
+          this.maxContinueCount > parseInt(maxContinue, 10)
+        ) {
+          this.newMaxContinue = true;
+          localStorage.setItem(
+            'maxContinueCount',
+            this.maxContinueCount.toString()
+          );
+        }
+
+        const maxCount = localStorage.getItem('maxCount');
+        if (
+          maxCount == null ||
+          this.count > parseInt(maxContinue, 10)
+        ) {
+          this.newMaxCount = true;
+          localStorage.setItem(
+            'maxCount',
+            this.count.toString()
+          );
+        }
+
       }
     }, 1000);
   }

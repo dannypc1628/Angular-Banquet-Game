@@ -1,11 +1,8 @@
-<p class="my-2">得分：{{count}}
-  <br>
-</p>
 <ng-container *ngIf="false==stoped">
-  <p class="my-2">剩餘秒數：{{time}}</p>
-  <p class="my-3 my-md-4 h1 text-center">{{quations[useIndex].title}}</p>
-  <div class="board row " [style.background-color]="quations[1].answerColor.code">
-    <div class="col text-center align-self-center">
+  <div class="board column  " [style.background-color]="quations[1].answerColor.code">
+    <p class="my-2">得分：{{count}}  剩餘秒數：{{time}}</p>
+    <p class="my-2 my-md-3 h1 text-center bg-white d-inline-block">{{quations[useIndex].title}}</p>
+    <div class="col text text-center align-self-center p-4">
       <p class="font-weight-bold" [style.color]="quations[0].answerColor.code">{{quations[2].answerColor.name}}</p>
     </div>
   </div>
@@ -26,7 +23,9 @@
   </div>
 </ng-container>
 <ng-container *ngIf="true==stoped">
-  最高連續答對次數：{{maxContinueCount}}
+  得分：{{count}} &emsp;<span *ngIf="newMaxCount">打破新紀錄</span>
+  <br />
+  最高連續答對：{{maxContinueCount}} &emsp;<span *ngIf="newMaxContinue">打破新紀錄</span>
     <br>
     <button class=" my-3 mx-auto btn btn-lg btn-success" (click)="ngOnInit()">再來一次</button>
 

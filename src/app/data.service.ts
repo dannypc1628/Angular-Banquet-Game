@@ -17,6 +17,8 @@ export class DataService {
     { code: 'Green', name: '綠色', order: 0 },
     { code: 'Yellow', name: '黃色', order: 0 },
     { code: 'Red', name: '紅色', order: 0 },
+    { code: 'Blue', name: '藍色', order: 0 },
+
   ];
   // 題型
   quationItems: Array<QuationItem> = [

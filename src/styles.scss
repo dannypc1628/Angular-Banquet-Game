@@ -7,17 +7,24 @@
   box-sizing: border-box;
 }
 
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+  background-color:white;
+  color:$gray-600;
+}
 
 .board{
-  height: 300px;
-  font-size: 72px;
-  text-shadow: 1px 1px 0 black, -1px -1px 0 black,
-              -1px 1px 0 black, 1px -1px 0 black;
+  height: 50vh;
+  .text{
+    font-size: 72px;
+    text-shadow: 1px 1px 0 black, -1px -1px 0 black,
+                -1px 1px 0 black, 1px -1px 0 black;
+  }
 }
 
 .adLink{
   font-size: 24px;
-  color:rgb(219, 112, 147);
 }
 
 .ad:hover{
