@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     },
     {
       type: '廣告',
-      title: '  長庚的作業簿',
+      title: '長庚的作業簿',
       link: 'https://www.facebook.com/dannyliu.me',
       color: 'rgb(30, 144, 255)',
     },
