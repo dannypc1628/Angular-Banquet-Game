@@ -13,11 +13,11 @@ export class DataService {
   colors: Array<Color> = [
     { code: 'White', name: '白色', order: 0 },
     { code: 'Black', name: '黑色', order: 0 },
-    { code: 'Orange', name: '橘色', order: 0 },
+    { code: 'DarkOrange', name: '橘色', order: 0 },
     { code: 'Green', name: '綠色', order: 0 },
-    { code: 'Yellow', name: '黃色', order: 0 },
-    { code: 'Red', name: '紅色', order: 0 },
-    { code: 'Blue', name: '藍色', order: 0 },
+    { code: 'Gold', name: '黃色', order: 0 },
+    { code: 'Crimson', name: '紅色', order: 0 },
+    { code: 'DodgerBlue', name: '藍色', order: 0 },
 
   ];
   // 題型
