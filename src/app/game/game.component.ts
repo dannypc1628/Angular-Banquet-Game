@@ -1,8 +1,7 @@
 import { Color } from './../type/color';
-import { Quation } from './../type/quation';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { QuationItem } from '../type/quationItem';
+import { QuestionItem } from '../type/questionItem';
 
 @Component({
   selector: 'app-game',
@@ -10,7 +9,7 @@ import { QuationItem } from '../type/quationItem';
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-  quations: Array<QuationItem>;
+  questions: Array<QuestionItem>;
   choiceItems: Array<Color>;
   useIndex: number;
   maxContinueCount = 0;
@@ -20,15 +19,15 @@ export class GameComponent implements OnInit {
   count = 0;
   time = 0;
   timer: any;
-  stoped = false;
-  constructor(private dataService: DataService) {}
+  stopped = false;
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.maxContinueCount = 0;
     this.continueCount = 0;
     this.count = 0;
     this.time = 60;
-    this.stoped = false;
+    this.stopped = false;
     this.next();
 
     this.timer = setInterval(() => {
@@ -36,7 +35,7 @@ export class GameComponent implements OnInit {
         this.time--;
       } else {
         this.clearTimer();
-        this.stoped = true;
+        this.stopped = true;
         const maxContinue = localStorage.getItem('maxContinueCount');
         if (
           maxContinue == null ||
@@ -70,14 +69,14 @@ export class GameComponent implements OnInit {
   }
 
   next(): void {
-    const quation = this.dataService.getQuation();
-    this.quations = quation.quations;
-    this.choiceItems = quation.choiceItems;
-    this.useIndex = quation.useIndex;
+    const question = this.dataService.getQuestion();
+    this.questions = question.questions;
+    this.choiceItems = question.choiceItems;
+    this.useIndex = question.useIndex;
   }
 
   checkAnswer(answer: string): void {
-    if (answer === this.quations[this.useIndex].answerColor.name) {
+    if (answer === this.questions[this.useIndex].answerColor.name) {
       this.showAnswer('yes');
     } else {
       this.showAnswer('no');

@@ -1,28 +1,28 @@
-<ng-container *ngIf="false==stoped">
-  <div class="board column  " [style.background-color]="quations[1].answerColor.code">
+<ng-container *ngIf="false==stopped">
+  <div class="board column" [style.background-color]="questions[1].answerColor.code">
     <p class="my-2">得分：{{count}}  剩餘秒數：{{time}}</p>
-    <p class="my-2 my-md-3 h1 text-center bg-white d-inline-block">{{quations[useIndex].title}}</p>
+    <p class="my-2 my-md-3 h1 text-center bg-white d-inline-block">{{questions[useIndex].title}}</p>
     <div class="col text text-center align-self-center p-4">
-      <p class="font-weight-bold" [style.color]="quations[0].answerColor.code">{{quations[2].answerColor.name}}</p>
+      <p class="font-weight-bold" [style.color]="questions[0].answerColor.code">{{questions[2].answerColor.name}}</p>
     </div>
   </div>
 
-  <div class="row mt-3 mt-md-4">
-    <div class="col">
+  <div class="row mt-3 mt-md-4 justify-content-center">
+    <div class="col-md-3">
       <button class="btn btn-lg btn-outline-secondary d-block mx-auto"
         (click)="checkAnswer(choiceItems[0].name)">{{choiceItems[0].name}}</button>
     </div>
-    <div class="col ">
+    <div class="col-md-3 ">
       <button class="btn btn-lg btn-outline-secondary d-block mx-auto"
         (click)="checkAnswer(choiceItems[1].name)">{{choiceItems[1].name}}</button>
     </div>
-    <div class="col ">
+    <div class="col-md-3 ">
       <button class="btn btn-lg btn-outline-secondary d-block mx-auto"
         (click)="checkAnswer(choiceItems[2].name)">{{choiceItems[2].name}}</button>
     </div>
   </div>
 </ng-container>
-<ng-container *ngIf="true==stoped">
+<ng-container *ngIf="true==stopped">
   得分：{{count}} &emsp;<span *ngIf="newMaxCount">歷史新高！</span>
   <br />
   最高連續答對：{{maxContinueCount}} &emsp;<span *ngIf="newMaxContinue">打破新紀錄！</span>

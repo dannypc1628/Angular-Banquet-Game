@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Color } from './type/color';
-import { Quation } from './type/quation';
-import { QuationItem } from './type/quationItem';
+import { Question } from './type/question';
+import { QuestionItem } from './type/questionItem';
 
 @Injectable({
   providedIn: 'root',
@@ -21,21 +21,21 @@ export class DataService {
 
   ];
   // 題型
-  quationItems: Array<QuationItem> = [
+  questionItems: Array<QuestionItem> = [
     { title: '請說出文字的顏色！', type: 0, answerColor: null },
     { title: '請說出背景的顏色！', type: 1, answerColor: null },
     { title: '請說出文字是什麼？', type: 2, answerColor: null },
   ];
 
-  getQuation(): Quation {
+  getQuestion(): Question {
     const choiceItems: Array<Color> = [];
     const excludeColorIndex = new Set<number>();
     // 建立題庫(題型、選項、答案)
     // 目前題型數量等於選項數量
-    for (let index = 0; index < this.quationItems.length; index++) {
+    for (let index = 0; index < this.questionItems.length; index++) {
       // 抽顏色
       const c = this.getColor(excludeColorIndex);
-      this.quationItems[index].answerColor = c;
+      this.questionItems[index].answerColor = c;
 
       // 選項給予隨機編號
       c.order = Math.floor(Math.random() * this.colors.length);
@@ -46,9 +46,9 @@ export class DataService {
     choiceItems.sort((a, b) => a.order - b.order);
 
     // 隨機從題型中抽一題
-    const qNumber = Math.floor(Math.random() * this.quationItems.length);
+    const qNumber = Math.floor(Math.random() * this.questionItems.length);
     return {
-      quations: this.quationItems,
+      questions: this.questionItems,
       choiceItems,
       useIndex: qNumber,
     };
