@@ -1,5 +1,5 @@
 import { Color } from './../type/color';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DataService } from '../data.service';
 import { QuestionItem } from '../type/questionItem';
 
@@ -62,6 +62,11 @@ export class GameComponent implements OnInit {
 
       }
     }, 1000);
+  }
+
+  @HostListener('window:keydown', ['$event.key'])
+  input(key: number): void {
+    this.checkAnswer(this.choiceItems[key - 1].name);
   }
 
   clearTimer(): void {
